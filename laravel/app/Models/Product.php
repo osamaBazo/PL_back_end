@@ -12,13 +12,24 @@ class Product extends Model
 {
     use HasFactory;
     protected $fillable = [
-      'name',
-      'description',
-      'img_url',
-      'quantity',
-      'category',
-        'price',
-        'expire_date',
-        'owner_id',
+        'product_name' ,
+        'price' ,
+        'description',
+        'quantity',
+        'first_discount',
+        'second_discount',
+        'third_discount',
+        'first_price',
+        'second_price',
+        'third_price',
+        //'categories_name',
+        //'users_id',
+        'expired_date'
     ];
+
+
+    public function categories()
+    {
+        return $this->belongsTo(Category::class,'categories_name' );
+    }
 }

@@ -15,14 +15,19 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('description');
-            $table->string('img_url');
-            $table->integer('quantity')->default(1);
-            $table->date('expire_date');
+           // $table->foreignId('users_id')->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->string('product_name')->unique();
+            //$table->foreignId('categories_name')->constrained('categories');
+            $table->text('description')->nullable();
             $table->integer('price');
-            $table->string('category');
-            $table->foreignId('owner_id')->constrained('users')->cascadeOnDelete();
+            $table->integer('quantity')->default(1);
+            $table->date('first_discount');
+            $table->date('second_discount');
+            $table->date('third_discount');
+            $table->date('expired_date');
+            $table->integer('first_price');
+            $table->integer('second_price');
+            $table->integer('third_price');
             $table->timestamps();
         });
     }
